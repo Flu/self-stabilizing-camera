@@ -23,7 +23,7 @@ def init_imu():
 		try:
 			if not bno.begin():
 				raise RuntimeError('Failed to initialize sensor.')
-			break;
+			break
 		except RuntimeError:
 			sleep(0.1)
 
@@ -37,8 +37,8 @@ def init_camera(size=(1280,720)):
 	"""Initializes camera component and the video writer for saving the video file"""
 	cap = cv2.VideoCapture(0)
 
-	cap.set(3,1280)
-	cap.set(4,720)
+	cap.set(3,size[0])
+	cap.set(4,size[1])
 
 	ret, frame = cap.read()
 	output_video = cv2.VideoWriter("output.avi", cv2.VideoWriter_fourcc(*'MJPG'), 27.4, np.shape(frame)[0:2][::-1])
